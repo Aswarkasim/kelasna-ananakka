@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\guru\DashboardGuruController;
 use App\Http\Controllers\home\AuthController;
 use App\Http\Controllers\guru\KelasGuruController;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,10 @@ Route::get('/register', [AuthController::class, 'register'])->middleware('guest'
 Route::post('/register', [AuthController::class, 'doRegister']);
 
 
+// =========== Guru =============
 Route::resource(
     '/guru/kelas',
     KelasGuruController::class
 );
+
+Route::get('/guru/dashboard', [DashboardGuruController::class, 'index']);
