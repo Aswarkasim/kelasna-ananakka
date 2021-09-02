@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\guru\DashboardGuruController;
+use App\Http\Controllers\guru\DiskusiGuruController;
 use App\Http\Controllers\home\AuthController;
 use App\Http\Controllers\guru\KelasGuruController;
+use App\Http\Controllers\guru\ModulGuruController;
+use App\Http\Controllers\guru\TugasGuruController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/wrapper', [
+        'content'      => 'home/index'
+    ]);
 });
 
 
@@ -30,9 +35,11 @@ Route::post('/register', [AuthController::class, 'doRegister']);
 
 
 // =========== Guru =============
-Route::resource(
-    '/guru/kelas',
-    KelasGuruController::class
-);
+Route::resource('/guru/kelas', KelasGuruController::class);
 
 Route::get('/guru/dashboard', [DashboardGuruController::class, 'index']);
+
+Route::resource('/guru/modul', ModulGuruController::class);
+Route::resource('/guru/diskusi', DiskusiGuruController::class);
+Route::resource('/guru/tugas', TugasGuruController::class);
+Route::resource('/guru/quiz', TugasGuruController::class);

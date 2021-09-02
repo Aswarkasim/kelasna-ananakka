@@ -1,6 +1,6 @@
 <style>
   .active-header{
-
+    color: blue;
   }
 </style>
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm rounded" aria-label="Eleventh navbar example">
@@ -13,15 +13,28 @@
     </button>
 
     <div class="navbar-collapse collapse" id="navbarsExample09" style="">
-     
+      
 
       @if (Request::is('siswa*'))
+
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active-header" aria-current="page" href="/siswa/dashboard"><b>Dashboard</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/siswa/modul"><b>Belajar</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/siswa/ujian"><b>Ujian</b></a>
+          </li>
+        </ul>
+
           
-      @elseif(Request::is('guru'))
+      @elseif(Request::is('guru*'))
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/guru/dashboard"><b>Dashboard</b></a>
+            <a class="nav-link active-header" aria-current="page" href="/guru/dashboard"><b>Dashboard</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/guru/modul"><b>Belajar</b></a>
@@ -55,9 +68,10 @@
         <div class="dropdown text-end">
           @auth
                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Aswar Kasim, S.Pd. <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                 {{auth()->user()->name}} <img src="{{ '/img/avatar.jpg' }}" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+                  <li><a class="dropdown-item" href="/guru/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                   <li><a class="dropdown-item" href="/guru/kelas"><i class="fa fa-cogs"></i> Ubah Kelas</a></li>
                   <li><a class="dropdown-item" href="/logout"><i class="fa fa-sign-out"></i> Sign out</a></li>
                 </ul>
