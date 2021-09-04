@@ -5,6 +5,7 @@ namespace App\Http\Controllers\guru;
 use App\Http\Controllers\Controller;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
+use tidy;
 
 class KelasGuruController extends Controller
 {
@@ -53,11 +54,21 @@ class KelasGuruController extends Controller
         $data['user_id'] = auth()->user()->id;
         $data['is_active'] = 0;
         // $data['cover']  = $request->file('cover')->getClientOriginalName();
-        $request->file('cover')->store('public/uploads/images');
-        $data['cover'] = str_replace($request, 'public', '/storage');
-        dd($data['cover']);
+        if ($request->hasFile('cover')) {
+            $cover = $request->file('cover');
+            $file_name = time() . "_" . $cover->getClientOriginalName();
+
+            $storage = 'uploads/images/';
+            $cover->move($storage, $file_name);
+            $data['cover'] = $file_name;
+        } else {
+            $data['cover'] = NULL;
+        }
+        // $data['cover'] = $request->file('cover')->store('public/uploads/images', 'public');
+        // $data['cover'] = str_replace($request, 'public', '/storage');
+        // dd($data['cover']);
         Kelas::create($data);
-        redirect('/guru/kelas');
+        return redirect()->route('kelas.index');
     }
 
     /**

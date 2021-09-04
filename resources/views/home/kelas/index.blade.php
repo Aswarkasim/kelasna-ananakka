@@ -42,7 +42,7 @@
         @foreach ($kelas as $row)
             
         <div class="card p-2 flex-row shadow-sm mt-2">
-          <img src="{{$row->cover}}" width="200px" alt="">
+          <img src="{{ asset('/uploads/images/' . $row->cover)}}" width="200px" alt="">
           <div class="card-body">
             <h4 class="card-title"><a href="" class="text-decoration-none"><strong> {{$row->name}}</strong></a></h4>
             <small>{{$row->created_at->diffForHumans()}}</small>
