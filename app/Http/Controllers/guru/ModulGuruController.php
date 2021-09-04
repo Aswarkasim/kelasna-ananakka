@@ -41,7 +41,8 @@ class ModulGuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file =  $request->file->store('public');
+        // return "Upload Success " . $file;
     }
 
     /**

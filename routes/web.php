@@ -30,6 +30,8 @@ Route::get('/login', [AuthController::class, 'index'])->middleware('guest');
 Route::post('/login', [AuthController::class, 'doLogin']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
+
+
 Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
 Route::post('/register', [AuthController::class, 'doRegister']);
 

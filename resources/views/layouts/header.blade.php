@@ -62,9 +62,6 @@
         </ul>
 
       @endif
-
-      
-
         <div class="dropdown text-end">
           @auth
                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

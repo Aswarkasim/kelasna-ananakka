@@ -3,7 +3,8 @@
 <h4><b>Tambah Modul</b></h4>
 
 
-<form method="post">
+<form action="/guru/modul" enctype="multipart/form-data" method="post">
+  @csrf
   <div class="row">
     <div class="col-md-3">
       <label for="" class="pull-right">Nama Modul</label>
@@ -23,14 +24,7 @@
     </div>
     <div class="col-md-9">
       <div class="form-group">
-        <?php
-        if (isset($error)) {
-          echo "<span class='text-danger'>";
-          echo $error;
-          echo "</span>";
-        }
-        ?>
-        <input type="file" class="form-control" name="file_modul" value="" placeholder="Nama Modul">
+        <input type="file" class="form-control" name="file" value="" placeholder="Nama Modul">
         <small>* Hanya menerima file berformat pdf</small>
       </div>
     </div>

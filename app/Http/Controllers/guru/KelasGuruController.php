@@ -45,7 +45,7 @@ class KelasGuruController extends Controller
         $data = $request->validate([
             'name'      => 'required|min:4',
             'cover'     => 'required',
-            'desc'      => 'required|min:20',
+            'desc'      => 'required',
             'is_active'
         ]);
 

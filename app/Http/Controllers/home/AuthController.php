@@ -26,7 +26,11 @@ class AuthController extends Controller
 
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
-            return redirect()->intended('/kelas');
+            if (auth()->user()->role == 'guru') {
+                return redirect()->intended('/guru/kelas');
+            } else {
+                return redirect()->intended('/siswa/kelas');
+            }
         }
 
         return back()->with('loginError', 'Gagal Login');
