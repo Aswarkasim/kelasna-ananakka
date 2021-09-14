@@ -13,6 +13,7 @@
       </div>
     </div> --}}
 
+    {{session('id_kelas')}}
 
    <div class="row">
      <div class="col-lg-3">
@@ -47,7 +48,7 @@
             <h4 class="card-title"><a href="" class="text-decoration-none"><strong> {{$row->name}}</strong></a></h4>
             <small>{{$row->created_at->diffForHumans()}}</small>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, maxime.</p>
-            <a href="/guru/dashboard" class="btn btn-primary">Buka</a>
+            <a href="/guru/kelas/{{$row->id}}" class="btn btn-primary">Buka</a>
           </div>
         </div>
         @endforeach

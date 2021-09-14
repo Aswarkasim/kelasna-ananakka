@@ -4,7 +4,7 @@
     
     <h3><strong>Dashboard</strong></h3>
     <hr>
-    <p class="alert alert-primary"><i class="fa fa-dashboard"></i> Selamat datang di kelas I dengan ID Kelas jsdnf</p>
+    <p class="alert alert-primary"><i class="fa fa-dashboard"></i> Selamat datang di kelas I dengan ID Kelas {{$kelas->id}}</p>
 
     <div class="row shadow-sm rounded px-2 py-3">
 

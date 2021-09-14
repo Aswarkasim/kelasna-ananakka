@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kelas;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -18,8 +19,17 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name'     => 'aswarkasim',
             'email'    => 'aswarkasim@gmail.com',
-            'role'    => 'guru',
+            'role'     => 'guru',
             'password' => bcrypt('password')
+        ]);
+
+        Kelas::create([
+            'name'     => 'Seni Budaya',
+            'user_id'  => '1',
+            'cover'    => '',
+            'desc'     => 'lorem ipsum dolor sit amet',
+            'kontrak'  => 'lorem ipsum dolor sit amet',
+            'is_active' => 0
         ]);
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\guru;
 
-use App\Http\Controllers\Controller;
+use tidy;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
-use tidy;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class KelasGuruController extends Controller
 {
@@ -18,7 +19,7 @@ class KelasGuruController extends Controller
     {
         return view('layouts/wrapper', [
             'kelas'   => Kelas::latest()->where('user_id', auth()->user()->id)->paginate(3),
-            'content'   => 'home/kelas/index'
+            'content'   => 'kelas/index'
         ]);
     }
 
@@ -31,7 +32,7 @@ class KelasGuruController extends Controller
     {
         return view('layouts/wrapper', [
 
-            'content'   => 'home/kelas/create'
+            'content'   => 'kelas/create'
         ]);
     }
 
@@ -79,7 +80,8 @@ class KelasGuruController extends Controller
      */
     public function show($id)
     {
-        //
+        Session::put('id_kelas', $id);
+        return redirect('/guru/dashboard');
     }
 
     /**
